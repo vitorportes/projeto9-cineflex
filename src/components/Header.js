@@ -1,9 +1,20 @@
 import styled from 'styled-components'
+import { useNavigate } from "react-router-dom";
 
 
-function Header() {
+
+function Header({returnButton}) {
+
+
+const navigate = useNavigate();
+
+    function goBack(){
+        navigate(-1);
+    }
+
     return (
-            <Cabecalho> 
+            <Cabecalho>
+                <ion-icon name="arrow-back-circle-outline" id={`${returnButton}`} onClick={goBack}></ion-icon>
                 <h1>CINEFLEX</h1>
             </Cabecalho>
     );
@@ -29,5 +40,17 @@ const Cabecalho = styled.header`
         font-size: 34px;
         line-height: 40px;
         color: #E8833A;
+    }
+
+    ion-icon {
+        position: absolute;
+        left: 0;
+        margin-left: 20px;
+        font-size: 40px;
+        color: #E8833A;
+    }
+
+    #button-off {
+        display: none;
     }
 `

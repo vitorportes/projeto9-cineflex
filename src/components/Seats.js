@@ -11,7 +11,7 @@ import Loading from './../assets/loading.gif'
 import { cpfMask } from './../utils/mask'
 
 
-function Seats({orderData, setOrderData}) {
+function Seats({setOrderData, setReturnButton}) {
 
     const navigate = useNavigate();
 
@@ -37,6 +37,8 @@ function Seats({orderData, setOrderData}) {
     
             promise.catch(error => alert("Erro no envio das informações"));
         }
+        setReturnButton("button-off");
+        window.scrollTo(0,0);
     }
 
     const {idSessao} = useParams();
@@ -135,7 +137,6 @@ const SeatsScreen = styled.div`
     .circle {
         width: 26px;
         height: 26px;
-        border: 1px solid #808F9D;
         border-radius: 50%;
         display: flex;
         align-items: center;

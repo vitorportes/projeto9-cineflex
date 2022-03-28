@@ -27,21 +27,17 @@ function Seat({id, number, isAvailable, chosenSeats, setChosenSeats, numberSeat,
 
 
     return (
-        <SeatSession className="circle" isAvailable={isAvailable} seatSelected={seatSelected} onClick={seatVerification} >
+        <SeatSession className="circle" isAvailable={isAvailable} seatSelected={seatSelected} onClick={seatVerification} borderColor={isAvailable}>
             <p>{number}</p>
         </SeatSession>
-
     );
 }
 
 export default Seat;
 
 const SeatSession = styled.div`
-    cursor: pointer;
+    cursor: pointer; 
     background-color: ${props => props.isAvailable === true ? "#C3CFD9" : "#FBE192"};
-    background-color: ${props => props.seatSelected === true ? "#8DD7CF" : ""}
+    border: 1px solid ${props => props.isAvailable === true ? "#7B8B99" : "#F7C52B"};
+    background-color: ${props => props.seatSelected === true ? "#8DD7CF" : ""};
 `;
-
-
-/* seatSelected, setSeatSelected */
-/* seatSelected={seatSelected} setSeatSelected={setSeatSelected} */

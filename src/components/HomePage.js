@@ -7,25 +7,28 @@ import Movie from "./Movie";
 import Loading from './../assets/loading.gif'
 
 
-function HomePage() {
+function HomePage({setReturnButton}) {
+
+
     const URL_API_MOVIES = "https://mock-api.driven.com.br/api/v5/cineflex/movies"
     const [movies, setMovies] = useState([])
 
     useEffect(() => {
+        setReturnButton("button-off");
         const promise = axios.get(URL_API_MOVIES)
         promise.then((response) => {
             const {data} = response;
             setMovies(data)
         })
         promise.catch((error) => {console.log(error.response);})
-    },[])
+    },[setReturnButton])
 
     return movies.length !== 0 ? 
     (
         <HomeScreen>
             <h1>Selecione o filme</h1>
             <div className='movies-list'>
-                {movies.map((movie) => <Movie key={movie.id} posterURL={movie.posterURL} idFilme={movie.id}/>)} 
+                {movies.map((movie) => <Movie key={movie.id} posterURL={movie.posterURL} idFilme={movie.id} setReturnButton={setReturnButton}/>)} 
             </div>
         </HomeScreen>
     ) : <LoadingScreen>

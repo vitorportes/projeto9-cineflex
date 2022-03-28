@@ -28,7 +28,7 @@ function OrderData({orderData, setOrderData}) {
             </div>
             <div className="button_align">
                 <Link to="/">
-                    <button onClick={() => setOrderData()}>Voltar pra Home(s)</button>
+                    <button onClick={() => setOrderData()}>Voltar para Home</button>
                 </Link>
             </div>
         </OrderDataScreen>
